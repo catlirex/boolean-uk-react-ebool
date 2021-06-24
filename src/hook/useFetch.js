@@ -7,7 +7,7 @@ export default function useFetch(APIlink, dataPath) {
     fetch(APIlink)
       .then((resp) => resp.json())
       .then((allData) => setDataList(dataPath ? allData[dataPath] : allData));
-  }, [setDataList]);
+  }, [setDataList, APIlink, dataPath]);
 
   return [dataList, setDataList];
 }

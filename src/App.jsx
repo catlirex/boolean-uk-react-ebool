@@ -3,17 +3,18 @@ import { Route } from "react-router-dom";
 import ProductPage from "./page/ProductsPage";
 import useFetch from "./hook/useFetch";
 import CategoriesPage from "./page/CategoriesPage";
+import ProductDetailPage from "./page/ProductDetailPage";
+import { useState } from "react";
 
 function App() {
-  const [productList, setProductList] = useFetch(
-    "http://localhost:4000/products"
-  );
+  const [productList] = useFetch("http://localhost:4000/products");
+  const [basketList, setBasketList] = useState([]);
 
   return (
     <>
       <Header />
       <main>
-        <Route path="/products">
+        <Route path="/products" exact>
           <ProductPage productList={productList} />
         </Route>
         <Route path="/categories" exact>
@@ -25,7 +26,11 @@ function App() {
         </Route>
 
         <Route path="/products/:id" exact>
-          {null}
+          <ProductDetailPage
+            productList={productList}
+            setBasketList={setBasketList}
+            basketList={basketList}
+          />
         </Route>
       </main>
     </>

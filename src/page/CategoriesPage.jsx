@@ -2,7 +2,7 @@ import CategoryCard from "../components/CategoryCard";
 import useFetch from "../hook/useFetch";
 
 export default function CategoriesPage() {
-  const [catList, setCatList] = useFetch("http://localhost:4000/categories");
+  const [catList] = useFetch("http://localhost:4000/categories");
 
   return (
     <main>
