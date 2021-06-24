@@ -5,6 +5,7 @@ import useFetch from "./hook/useFetch";
 import CategoriesPage from "./page/CategoriesPage";
 import ProductDetailPage from "./page/ProductDetailPage";
 import { useState } from "react";
+import BasketPage from "./page/BasketPage";
 
 function App() {
   const [productList] = useFetch("http://localhost:4000/products");
@@ -22,7 +23,11 @@ function App() {
         </Route>
 
         <Route path="/basket" exact>
-          {null}
+          <BasketPage
+            basketList={basketList}
+            productList={productList}
+            setBasketList={setBasketList}
+          />
         </Route>
 
         <Route path="/products/:id" exact>

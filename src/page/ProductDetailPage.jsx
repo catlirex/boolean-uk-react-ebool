@@ -15,11 +15,19 @@ export default function ProductDetailPage({
       setBasketList(
         basketList.map((item) =>
           item.id === Number(id)
-            ? { id: item.id, quantity: item.quantity + 1 }
+            ? {
+                id: item.id,
+                quantity: item.quantity + 1,
+                subTotal: matchProduct.price * (item.quantity + 1),
+              }
             : item
         )
       );
-    else setBasketList([...basketList, { id: matchProduct.id, quantity: 1 }]);
+    else
+      setBasketList([
+        ...basketList,
+        { id: matchProduct.id, quantity: 1, subTotal: matchProduct.price },
+      ]);
     history.push("/basket");
   }
   return (
