@@ -37,6 +37,14 @@ function App() {
             basketList={basketList}
           />
         </Route>
+
+        <Route path="/categories/:id" exact>
+          <ProductPage productList={productList} />
+        </Route>
+
+        <Route path="/404notfound" exact>
+          <h2>Page not found!! What are you looking for?</h2>
+        </Route>
       </main>
     </>
   );

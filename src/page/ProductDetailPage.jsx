@@ -8,7 +8,10 @@ export default function ProductDetailPage({
   const { id } = useParams();
   let history = useHistory();
   let matchProduct = productList.find((product) => product.id === Number(id));
-  if (!matchProduct) return null;
+  if (!matchProduct) {
+    history.push("/404notfound");
+    return null;
+  }
 
   function handleClick() {
     if (basketList.some((item) => item.id === Number(id)))
