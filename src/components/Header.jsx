@@ -47,6 +47,14 @@ export default function Header() {
               Basket
             </Link>
           </li>
+          <li>
+            <input
+              type="text"
+              name="searchBar"
+              id="searchBar"
+              placeholder="Search by product name..."
+            />
+          </li>
         </ul>
       </nav>
     </header>

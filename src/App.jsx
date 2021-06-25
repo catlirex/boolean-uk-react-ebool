@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import ProductPage from "./page/ProductsPage";
 import useFetch from "./hook/useFetch";
 import CategoriesPage from "./page/CategoriesPage";
@@ -15,6 +15,10 @@ function App() {
     <>
       <Header />
       <main>
+        <Route path="/" exact>
+          <Redirect to="/products" />
+        </Route>
+
         <Route path="/products" exact>
           <ProductPage productList={productList} />
         </Route>
