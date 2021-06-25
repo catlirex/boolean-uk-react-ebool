@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const randColour = () =>
   ["green", "red", "blue", "yellow"][Math.floor(Math.random() * 4)];
 
 export default function Header() {
+  let history = useHistory();
   return (
     <header
       className="header"
@@ -48,12 +49,19 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <input
-              type="text"
-              name="searchBar"
-              id="searchBar"
-              placeholder="Search by product name..."
-            />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                history.push(`/search/${e.target.searchBar.value}`);
+              }}
+            >
+              <input
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder="Search any product..."
+              />
+            </form>
           </li>
         </ul>
       </nav>
